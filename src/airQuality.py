@@ -44,6 +44,7 @@ class AirQuality:
         self._wind_speed = wind_speed
         self._wind_direction = wind_direction
 
+
     def get_data(self) -> tuple[str, int, int, str, str, int, int, int, float, int]:
         data = (self._timestamp, self._aqi_US, self._aqi_China, self._main_pollutant_US, self._main_pollutant_China,
                 self._temperature, self._athmospheric_pressure, self._humidity, self._wind_speed, self._wind_direction)

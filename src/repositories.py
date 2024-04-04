@@ -28,6 +28,8 @@ class AirQualityRepository:
                 'wind_direction': wind_direction
             }
         )
+        print(self._airQualities)
+        print("from repository")
 
     def get_airQualities(self) -> list[dict[str, str | int | float]]:
         return self._airQualities

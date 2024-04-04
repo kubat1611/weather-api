@@ -1,4 +1,3 @@
-import datetime
 import copy
 
 from repositories import AirQualityRepository, airQualityRepository
@@ -7,7 +6,7 @@ from airQuality import AirQuality, airQuality
 
 
 class CreateAirQualityController:
-    def __init__(self, repository: AirQualityRepository, dto: AirQuality) -> None:
+    def __init__(self, repository: AirQualityRepository, dto: AirQuality):
         self._repository = repository
         self._dto = dto
 
