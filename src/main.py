@@ -9,10 +9,8 @@ app = Flask(__name__)
 
 r = requests.get("http://api.airvisual.com/v2/city?city=Warsaw&state=Mazovia&country=Poland&key=" + key).json()
 
-data = r['data']
-current = data['current']
-pollution = current['pollution']
-weather = current['weather']
+pollution = r['data']['current']['pollution']
+weather = r['data']['current']['weather']
 
 
 @app.get('/')
