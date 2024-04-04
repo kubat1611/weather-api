@@ -26,20 +26,20 @@ def get_airQualities() -> Response:
     return Response(response=json.dumps(airQualities), status=200, mimetype="application/json")
 
 
-@app.get('/airQualities/get/<string:timestamp>')
-def get_airQuality(timestamp: str) -> Response:
-    try:
-        airQuality = get_airQualities_controller.get(timestamp=timestamp)
-        return Response(response=json.dumps(airQuality), status=200, mimetype="application/json")
-    except ValueError as error:
-        return Response(response=str(error), status=400)
-
-
 @app.get('/airQualities/create')
 def create_airQuality() -> Response:
     try:
         create_airQuality_controller.create({"pollution": pollution, "weather": weather})
         return Response(response="AirQuality created", status=201)
+    except ValueError as error:
+        return Response(response=str(error), status=400)
+
+
+@app.get('/airQualities/<string:timestamp>')
+def get_airQuality(timestamp: str) -> Response:
+    try:
+        airQuality = get_airQualities_controller.get(timestamp=timestamp)
+        return Response(response=json.dumps(airQuality), status=200, mimetype="application/json")
     except ValueError as error:
         return Response(response=str(error), status=400)
 
