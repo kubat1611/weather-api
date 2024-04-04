@@ -15,21 +15,9 @@ class CreateAirQualityController:
         data = self._dto.get_data()
 
         if None in data:
-            raise ValueError("Missing one of the arguments")
+            raise ValueError("Missing arguments")
 
-        timestamp = data[0]
-        aqi_US = data[1]
-        aqi_China = data[2]
-        main_pollutant_US = data[3]
-        main_pollutant_China = data[4]
-        temperature = data[5]
-        athmospheric_pressure = data[6]
-        humidity = data[7]
-        wind_speed = data[8]
-        wind_direction = data[9]
-
-        self._repository.add_airQuality(timestamp, aqi_US, aqi_China, main_pollutant_US, main_pollutant_China,
-                                        temperature, athmospheric_pressure, humidity, wind_speed, wind_direction)
+        self._repository.add_airQuality(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9])
 
 
 class GetAirQualitiesController:
