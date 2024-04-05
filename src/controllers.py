@@ -1,8 +1,8 @@
 import copy
-
+from typing import Union, List
 from repositories import AirQualityRepository, airQualityRepository
 
-from airQuality import AirQuality, airQuality
+from airQuality import AirQuality
 
 
 class CreateAirQualityController:
@@ -25,7 +25,7 @@ class GetAirQualitiesController:
     def __init__(self, repository: AirQualityRepository) -> None:
         self._repository = repository
 
-    def get(self, timestamp: str | None = None):
+    def get(self, timestamp: Union[str, None] = None) -> Union[List[dict], dict]:
         airQualities = copy.deepcopy(self._repository.get_air_qualities())
         if timestamp is None:
             return airQualities
@@ -36,10 +36,10 @@ class GetAirQualitiesController:
             if airQuality['temperature'] >= 100 or airQuality['temperature'] <= -100:
                 raise ValueError('Invalid temperature')
             if airQuality['athmospheric_pressure'] >= 2000 or airQuality['athmospheric_pressure'] <= 500:
-                raise ValueError('Invalid athmospheric pressure')
+                raise ValueError('Invalid atmospheric pressure')
 
         raise ValueError('Invalid timestamp')
 
 
-create_airQuality_controller = CreateAirQualityController(airQualityRepository, airQuality)
+create_airQuality_controller = CreateAirQualityController(airQualityRepository, AirQuality())
 get_airQualities_controller = GetAirQualitiesController(airQualityRepository)
