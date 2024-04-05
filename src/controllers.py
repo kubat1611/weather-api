@@ -17,7 +17,8 @@ class CreateAirQualityController:
         if None in data:
             raise ValueError("Missing arguments")
 
-        self._repository.add_airQuality(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9])
+        self._repository.add_airQuality(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
+                                        data[9])
 
 
 class GetAirQualitiesController:
@@ -25,13 +26,17 @@ class GetAirQualitiesController:
         self._repository = repository
 
     def get(self, timestamp: str | None = None):
-        airQualities = copy.deepcopy(self._repository.get_airQualities())
+        airQualities = copy.deepcopy(self._repository.get_air_qualities())
         if timestamp is None:
             return airQualities
 
         for airQuality in airQualities:
             if airQuality['timestamp'] == timestamp:
                 return airQuality
+            if airQuality['temperature'] >= 100 or airQuality['temperature'] <= -100:
+                raise ValueError('Invalid temperature')
+            if airQuality['athmospheric_pressure'] >= 2000 or airQuality['athmospheric_pressure'] <= 500:
+                raise ValueError('Invalid athmospheric pressure')
 
         raise ValueError('Invalid timestamp')
 
