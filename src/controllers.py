@@ -1,6 +1,6 @@
 import copy
 from typing import Union, List
-from repositories import AirQualityRepository, airQualityRepository
+from repositories import AirQualityRepository
 
 from airQuality import AirQuality
 

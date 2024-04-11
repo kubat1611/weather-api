@@ -17,7 +17,7 @@ def fetch_air_quality_data():
         print("Failed to create AirQuality.")
         print(response.text)
 
-    controllers.create_airQuality_controller.create(data)
+    controllers.CreateAirQualityController(controllers.AirQualityRepository(), controllers.AirQuality()).create(data)
 
     return data
 
