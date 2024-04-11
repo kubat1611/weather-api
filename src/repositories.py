@@ -33,4 +33,3 @@ class AirQualityRepository:
         return self._airQualities
 
 
-airQualityRepository = AirQualityRepository()

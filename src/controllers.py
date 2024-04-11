@@ -41,5 +41,4 @@ class GetAirQualitiesController:
         raise ValueError('Invalid timestamp')
 
 
-create_airQuality_controller = CreateAirQualityController(airQualityRepository, AirQuality())
-get_airQualities_controller = GetAirQualitiesController(airQualityRepository)
+
