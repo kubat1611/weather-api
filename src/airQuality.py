@@ -35,6 +35,7 @@ class AirQuality(BaseModel):
         if self.atmospheric_pressure >= 2000 or self.atmospheric_pressure <= 500:
             raise ValueError('Invalid athmospheric pressure')
 
+
     def get_data(self) -> tuple[str, int, int, str, str, int, int, int, float, int]:
         data = (
             self.timestamp, self.aqi_US, self.aqi_China, self.main_pollutant_US, self.main_pollutant_China,
